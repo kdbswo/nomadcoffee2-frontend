@@ -1,10 +1,14 @@
-import { isLoggedInVar } from "../apollo";
+import { Link, useHistory } from "react-router-dom";
+import { logUserOut } from "../apollo";
+import routes from "../routes";
 
-function Home({ setIsLoggedIn }) {
+function Home() {
+  const history = useHistory();
   return (
     <div>
       <h1>Home</h1>
-      <button onClick={() => isLoggedInVar(false)}>Log out</button>
+      <button onClick={() => logUserOut(history)}>Log out</button>
+      <Link to={routes.admin}>admin</Link>
     </div>
   );
 }
